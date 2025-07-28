@@ -1,2 +1,3 @@
 ### 한밭대학교 특강 실습
-2025.07.28 ~ 2025.08.08
+- 2025.07.28 ~ 2025.08.08
+- ref: https://github.com/eomjinyoung/hanbat-study/
