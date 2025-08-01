@@ -1,12 +1,24 @@
 plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.4'
     id 'application'
 }
+
+// Spring Boot 버전에 호환 되는 의존성 관리 플러그인을 적용한다.
+apply plugin: 'io.spring.dependency-management'
 
 repositories {
     mavenCentral() // 의존 라이브러리를 갖고 있는 중앙 저장소 서버의 주소를 지정한다.
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.12.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
@@ -17,18 +29,19 @@ java {
     }
 }
 
-application {
-    mainClass = 'org.example.myapp.App'
-}
-
 jar {
     archiveFileName = 'myapp.jar'
 }
 
-tasks.named('run') {
-    standardInput = System.in
-}
-
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaExec) {
+    systemProperty 'sun.stdout.encoding', 'UTF-8'
+    systemProperty 'sun.stderr.encoding', 'UTF-8'
+}
+
+application {
+    mainClass = 'org.example.myapp.App'
 }

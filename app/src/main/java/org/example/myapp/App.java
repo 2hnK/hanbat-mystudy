@@ -1,23 +1,12 @@
 package org.example.myapp;
 
-import java.util.Scanner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * This is a simple Java application that prompts the user for their name
- * and greets them.
- *
- * @author 2hnK
- */
+@SpringBootApplication
 public class App {
-    /*
-     * This is a simple Java application that prompts the user for their name
-     */
-
-    public static void main(String[] args) { // entry point
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter your name: ");
-        String name = sc.nextLine();
-        System.out.println("Hello " + name + "!");
-        sc.close();
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+        System.out.println("Spring Boot server run!");
     }
 }

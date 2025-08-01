@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Gemini에게 질문하기</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            height: 80vh;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .input-box {
+            display: flex;
+            padding: 20px;
+        }
+
+        .input-box input {
+            flex-grow: 1;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .input-box button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .input-box button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-box" id="chatBox">
+        <!-- 채팅 내용이 여기에 표시됩니다 -->
+    </div>
+    <div class="input-box">
+        <input type="text" id="questionInput" placeholder="메시지를 입력하세요...">
+        <button onclick="sendMessage()">전송</button>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        // 간단한 자바스크립트 예시입니다. 실제로는 백엔드와 연동해야 합니다.
+        const input = document.getElementById('questionInput');
+        const chatBox = document.getElementById('chatBox');
+        const message = input.value;
+
+        if (message.trim() !== '') {
+            const userMessage = document.createElement('div');
+            userMessage.textContent = '나: ' + message;
+            chatBox.appendChild(userMessage);
+
+            // Gemini 응답 (예시)
+            const geminiMessage = document.createElement('div');
+            geminiMessage.textContent = 'Gemini: ' + '안녕하세요!! 무엇을 도와드릴까요?';
+            chatBox.appendChild(geminiMessage);
+
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    }
+</script>
+
+</body>
+</html>
